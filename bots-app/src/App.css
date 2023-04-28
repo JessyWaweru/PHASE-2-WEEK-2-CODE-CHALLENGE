@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.your-bot-army{
+  background-color:rgb(105, 4, 4);
+}
+.botcollection{
+  color: crimson;
+}

@@ -12,8 +12,10 @@ function App() {
   },[])
   const fetchData=async()=>{
     const res=await
-    fetch('http://localhost:3000/bots')
-    const data=await res.json()
+    fetch('http://localhost:3001/bots')
+    const text=await res.text()
+    console.log (text)
+    const data=JSON.parse(text) 
     setBots(data)
   }
   const addToArmy=(bot) =>
@@ -29,20 +31,22 @@ const dischargeBot=async (botId)=>{
 setBotArmy(botArmy.filter(item=>item.id
  !== botId ))
  await
- fetch(`http://localhost:3000/bots/${botId}`,{
+ fetch(`http://localhost:3001/bots/${botId}`,{
 
       method:'DELETE',
  })
 
 }
   return (
-    <div className='app'>
-      <BotCollection bots={bots} addToArmy={addToArmy}/>
-      <YourBotArmy
+   < div className='app'>
+      
+      <YourBotArmy 
       botArmy={botArmy}
+      
       releaseBot={releaseBot}
       dischargeBot={dischargeBot}
       />
+      <BotCollection bots={bots} addToArmy={addToArmy}/>
     </div>
   );
 }
